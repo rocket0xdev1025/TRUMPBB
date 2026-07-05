@@ -29,11 +29,24 @@
           animation: {
             'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
             'float': 'float 6s ease-in-out infinite',
+            'waterfall': 'waterfall var(--wf-duration, 8s) linear infinite',
+            'waterfall-slow': 'waterfall 14s linear infinite',
+            'waterfall-fast': 'waterfall 5s linear infinite',
+            'waterfall-drip': 'waterfall-drip 3s ease-in infinite',
           },
           keyframes: {
             float: {
               '0%, 100%': { transform: 'translateY(0px)' },
               '50%': { transform: 'translateY(-10px)' },
+            },
+            waterfall: {
+              '0%': { transform: 'translateY(-120%)' },
+              '100%': { transform: 'translateY(120vh)' },
+            },
+            'waterfall-drip': {
+              '0%': { transform: 'translateY(-20px) scaleY(0.3)', opacity: '0' },
+              '15%': { opacity: '1' },
+              '100%': { transform: 'translateY(100vh) scaleY(1)', opacity: '0' },
             },
           },
         },
@@ -119,9 +132,123 @@
     .nav-link:hover::after {
       width: 100%;
     }
+
+    .waterfall-page {
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    #waterfall-bg {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      overflow: hidden;
+      background: linear-gradient(180deg, #0A1628 0%, #002868 40%, #0A1628 100%);
+    }
+
+    @keyframes waterfall {
+      0% { transform: translateY(-120%); }
+      100% { transform: translateY(120vh); }
+    }
+
+    @keyframes waterfall-drip {
+      0% { transform: translateY(-30px) scale(0.6); opacity: 0; }
+      15% { opacity: 0.9; }
+      100% { transform: translateY(110vh) scale(1); opacity: 0; }
+    }
+
+    .wf-stream {
+      position: absolute;
+      top: -50%;
+      width: 3px;
+      height: 140%;
+      border-radius: 999px;
+      filter: blur(0.5px);
+      animation: waterfall var(--wf-dur, 7s) linear infinite;
+      animation-delay: var(--wf-delay, 0s);
+      opacity: var(--wf-opacity, 0.35);
+    }
+
+    .wf-stream-red {
+      background: linear-gradient(180deg, transparent 0%, #B22234 20%, #FFD700 50%, #B22234 80%, transparent 100%);
+      box-shadow: 0 0 12px rgba(178, 34, 52, 0.5);
+    }
+
+    .wf-stream-blue {
+      background: linear-gradient(180deg, transparent 0%, #002868 20%, #4a9eff 50%, #002868 80%, transparent 100%);
+      box-shadow: 0 0 12px rgba(0, 40, 104, 0.5);
+    }
+
+    .wf-stream-gold {
+      background: linear-gradient(180deg, transparent 0%, #FFD700 30%, #fff 50%, #FFD700 70%, transparent 100%);
+      box-shadow: 0 0 10px rgba(255, 215, 0, 0.4);
+      width: 2px;
+    }
+
+    .wf-star {
+      position: absolute;
+      top: -30px;
+      color: var(--wf-color, #FFD700);
+      font-size: var(--wf-size, 12px);
+      opacity: 0;
+      animation: waterfall-drip var(--wf-dur, 6s) ease-in infinite;
+      animation-delay: var(--wf-delay, 0s);
+      text-shadow: 0 0 6px currentColor;
+    }
+
+    .wf-mist {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 40% at 20% 100%, rgba(178, 34, 52, 0.08) 0%, transparent 60%),
+        radial-gradient(ellipse 80% 40% at 80% 100%, rgba(0, 40, 104, 0.1) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 30% at 50% 100%, rgba(255, 215, 0, 0.05) 0%, transparent 50%);
+      animation: mist-pulse 8s ease-in-out infinite alternate;
+    }
+
+    @keyframes mist-pulse {
+      0% { opacity: 0.6; transform: translateY(0); }
+      100% { opacity: 1; transform: translateY(-10px); }
+    }
+
+    .page-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .wf-reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .wf-reveal.wf-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .wf-cascade > .wf-reveal:nth-child(1) { transition-delay: 0s; }
+    .wf-cascade > .wf-reveal:nth-child(2) { transition-delay: 0.12s; }
+    .wf-cascade > .wf-reveal:nth-child(3) { transition-delay: 0.24s; }
+    .wf-cascade > .wf-reveal:nth-child(4) { transition-delay: 0.36s; }
+    .wf-cascade > .wf-reveal:nth-child(5) { transition-delay: 0.48s; }
+    .wf-cascade > .wf-reveal:nth-child(6) { transition-delay: 0.6s; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .wf-stream, .wf-star, .wf-mist { animation: none; opacity: 0.2; }
+      .wf-reveal { opacity: 1; transform: none; transition: none; }
+    }
   </style>
 </head>
-<body class="stars-bg text-white font-sans antialiased min-h-screen">
+<body class="waterfall-page text-white font-sans antialiased min-h-screen">
+
+  <!-- Full-page waterfall background -->
+  <div id="waterfall-bg" aria-hidden="true">
+    <div class="wf-mist"></div>
+  </div>
+
+  <div class="page-content">
 
   <!-- Navigation -->
   <nav class="fixed top-0 left-0 right-0 z-50 bg-patriot-navy/90 backdrop-blur-md border-b border-patriot-gold/20">
@@ -169,25 +296,25 @@
     </div>
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-8 sm:-mt-16 relative z-10 pb-16">
-      <div class="text-center">
-        <div class="inline-flex items-center gap-2 bg-patriot-blue/80 backdrop-blur-sm border border-patriot-gold/30 rounded-full px-5 py-2 mb-6">
+      <div class="text-center wf-cascade">
+        <div class="inline-flex items-center gap-2 bg-patriot-blue/80 backdrop-blur-sm border border-patriot-gold/30 rounded-full px-5 py-2 mb-6 wf-reveal">
           <span class="text-patriot-gold text-lg">&#9733;</span>
           <span class="text-sm font-bold uppercase tracking-widest text-patriot-gold">Built on Solana</span>
           <span class="text-patriot-gold text-lg">&#9733;</span>
         </div>
 
-        <h1 class="font-display text-5xl sm:text-7xl lg:text-8xl tracking-wider leading-none mb-4">
+        <h1 class="font-display text-5xl sm:text-7xl lg:text-8xl tracking-wider leading-none mb-4 wf-reveal">
           <span class="text-patriot-blue glow-blue">TRUMP</span>
           <span class="text-patriot-red glow-red"> BOOMER </span>
           <span class="text-patriot-blue glow-blue">BULL</span>
         </h1>
 
-        <p class="text-lg sm:text-xl text-gray-300 max-w-2xl mx-auto mb-8 leading-relaxed">
+        <p class="text-lg sm:text-xl text-gray-300 max-w-2xl mx-auto mb-8 leading-relaxed wf-reveal">
           The most patriotic meme coin in America. Born in the land of the free, charging straight to the moon
           with horns high and flags waving. <span class="text-patriot-gold font-bold">$TRUMPBB</span> — because America deserves a bull market.
         </p>
 
-        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 wf-reveal">
           <a href="https://swap.pump.fun/?input=So11111111111111111111111111111111111111112&output=TBA" class="btn-patriot px-8 py-4 rounded-lg font-bold uppercase tracking-wider text-white text-lg">
             Buy $TRUMPBB Now
           </a>
@@ -198,20 +325,20 @@
       </div>
 
       <!-- Stats -->
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-16">
-        <div class="card-patriot rounded-xl p-6 text-center">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-16 wf-cascade">
+        <div class="card-patriot rounded-xl p-6 text-center wf-reveal">
           <div class="font-display text-3xl sm:text-4xl text-patriot-gold mb-1">100%</div>
           <div class="text-xs sm:text-sm uppercase tracking-wider text-gray-400">American Made</div>
         </div>
-        <div class="card-patriot rounded-xl p-6 text-center">
+        <div class="card-patriot rounded-xl p-6 text-center wf-reveal">
           <div class="font-display text-3xl sm:text-4xl text-patriot-red mb-1">&#9733;</div>
           <div class="text-xs sm:text-sm uppercase tracking-wider text-gray-400">Patriotic AF</div>
         </div>
-        <div class="card-patriot rounded-xl p-6 text-center">
+        <div class="card-patriot rounded-xl p-6 text-center wf-reveal">
           <div class="font-display text-3xl sm:text-4xl text-patriot-gold mb-1">SOL</div>
           <div class="text-xs sm:text-sm uppercase tracking-wider text-gray-400">Solana Powered</div>
         </div>
-        <div class="card-patriot rounded-xl p-6 text-center">
+        <div class="card-patriot rounded-xl p-6 text-center wf-reveal">
           <div class="font-display text-3xl sm:text-4xl text-patriot-red mb-1">MOON</div>
           <div class="text-xs sm:text-sm uppercase tracking-wider text-gray-400">Destination</div>
         </div>
@@ -222,7 +349,7 @@
   <!-- About Section -->
   <section id="about" class="relative py-20 sm:py-28 stripes-overlay">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-16">
+      <div class="text-center mb-16 wf-reveal">
         <span class="text-patriot-gold font-bold uppercase tracking-widest text-sm">Our Story</span>
         <h2 class="font-display text-4xl sm:text-6xl tracking-wider mt-2 text-white">
           ABOUT <span class="text-patriot-red">THE BULL</span>
@@ -231,7 +358,7 @@
       </div>
 
       <div class="grid lg:grid-cols-2 gap-12 items-center">
-        <div class="flex justify-center">
+        <div class="flex justify-center wf-reveal">
           <div class="relative">
             <div class="absolute -inset-4 bg-gradient-to-r from-patriot-red/30 via-patriot-gold/20 to-patriot-blue/30 rounded-2xl blur-xl"></div>
             <img
@@ -242,7 +369,7 @@
           </div>
         </div>
 
-        <div class="space-y-6">
+        <div class="space-y-6 wf-reveal">
           <p class="text-lg text-gray-300 leading-relaxed">
             In the greatest nation on Earth, where eagles soar and freedom rings, one bull stood taller than the rest.
             <span class="text-patriot-gold font-bold">TRUMP BOOMER BULL</span> isn't just a meme coin — it's a movement.
@@ -273,7 +400,7 @@
   <section id="how-to-buy" class="relative py-20 sm:py-28">
     <div class="absolute inset-0 bg-gradient-to-b from-transparent via-patriot-blue/10 to-transparent"></div>
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-      <div class="text-center mb-16">
+      <div class="text-center mb-16 wf-reveal">
         <span class="text-patriot-gold font-bold uppercase tracking-widest text-sm">Easy as Apple Pie</span>
         <h2 class="font-display text-4xl sm:text-6xl tracking-wider mt-2 text-white">
           HOW TO <span class="text-patriot-red">BUY</span>
@@ -282,8 +409,8 @@
         <p class="text-gray-400 mt-4 max-w-xl mx-auto">Four simple steps to join the most patriotic bull run in crypto history.</p>
       </div>
 
-      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        <div class="card-patriot rounded-2xl p-8 relative group hover:border-patriot-gold/60 transition-all">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 wf-cascade">
+        <div class="card-patriot rounded-2xl p-8 relative group hover:border-patriot-gold/60 transition-all wf-reveal">
           <div class="absolute -top-4 -left-2 font-display text-6xl text-patriot-red/30 group-hover:text-patriot-red/50 transition-colors">01</div>
           <div class="relative pt-6">
             <div class="w-12 h-12 rounded-lg bg-patriot-red/20 flex items-center justify-center mb-4 text-2xl">&#128176;</div>
@@ -294,7 +421,7 @@
           </div>
         </div>
 
-        <div class="card-patriot rounded-2xl p-8 relative group hover:border-patriot-gold/60 transition-all">
+        <div class="card-patriot rounded-2xl p-8 relative group hover:border-patriot-gold/60 transition-all wf-reveal">
           <div class="absolute -top-4 -left-2 font-display text-6xl text-patriot-red/30 group-hover:text-patriot-red/50 transition-colors">02</div>
           <div class="relative pt-6">
             <div class="w-12 h-12 rounded-lg bg-patriot-blue/20 flex items-center justify-center mb-4 text-2xl">&#9889;</div>
@@ -305,7 +432,7 @@
           </div>
         </div>
 
-        <div class="card-patriot rounded-2xl p-8 relative group hover:border-patriot-gold/60 transition-all">
+        <div class="card-patriot rounded-2xl p-8 relative group hover:border-patriot-gold/60 transition-all wf-reveal">
           <div class="absolute -top-4 -left-2 font-display text-6xl text-patriot-red/30 group-hover:text-patriot-red/50 transition-colors">03</div>
           <div class="relative pt-6">
             <div class="w-12 h-12 rounded-lg bg-patriot-red/20 flex items-center justify-center mb-4 text-2xl">&#128260;</div>
@@ -316,7 +443,7 @@
           </div>
         </div>
 
-        <div class="card-patriot rounded-2xl p-8 relative group hover:border-patriot-gold/60 transition-all">
+        <div class="card-patriot rounded-2xl p-8 relative group hover:border-patriot-gold/60 transition-all wf-reveal">
           <div class="absolute -top-4 -left-2 font-display text-6xl text-patriot-red/30 group-hover:text-patriot-red/50 transition-colors">04</div>
           <div class="relative pt-6">
             <div class="w-12 h-12 rounded-lg bg-patriot-gold/20 flex items-center justify-center mb-4 text-2xl">&#127482;&#127480;</div>
@@ -328,14 +455,14 @@
         </div>
       </div>
 
-      <div class="mt-12 card-patriot rounded-2xl p-6 sm:p-8 max-w-3xl mx-auto">
+      <div class="mt-12 card-patriot rounded-2xl p-6 sm:p-8 max-w-3xl mx-auto wf-reveal">
         <div class="flex flex-col sm:flex-row items-center gap-4">
           <div class="flex-shrink-0 font-display text-lg text-patriot-gold uppercase tracking-wider">Contract:</div>
           <div class="flex-1 w-full bg-patriot-navy/80 rounded-lg px-4 py-3 font-mono text-sm text-gray-300 text-center sm:text-left break-all border border-patriot-gold/20">
             TBA
           </div>
           <button
-            onclick="navigator.clipboard.writeText('TBA — Check Telegram')"
+            onclick="navigator.clipboard.writeText('TBA')"
             class="flex-shrink-0 px-5 py-3 rounded-lg bg-patriot-blue hover:bg-patriot-blue/80 font-semibold text-sm uppercase tracking-wider transition-colors border border-patriot-gold/30"
           >
             Copy
@@ -348,7 +475,7 @@
   <!-- Social Section -->
   <section id="social" class="relative py-20 sm:py-28 stripes-overlay">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-16">
+      <div class="text-center mb-16 wf-reveal">
         <span class="text-patriot-gold font-bold uppercase tracking-widest text-sm">Join the Patriots</span>
         <h2 class="font-display text-4xl sm:text-6xl tracking-wider mt-2 text-white">
           SOCIAL <span class="text-patriot-red">LINKS</span>
@@ -359,12 +486,12 @@
         </p>
       </div>
 
-      <div class="flex flex-col sm:flex-row items-center justify-center gap-8">
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-8 wf-cascade">
         <a
           href="https://t.me/TRUMPBBsol"
           target="_blank"
           rel="noopener noreferrer"
-          class="group card-patriot rounded-2xl p-8 sm:p-10 flex flex-col items-center gap-4 w-64 hover:border-patriot-gold/60 hover:scale-105 transition-all"
+          class="group card-patriot rounded-2xl p-8 sm:p-10 flex flex-col items-center gap-4 w-64 hover:border-patriot-gold/60 hover:scale-105 transition-all wf-reveal"
         >
           <img
             src="tg.png"
@@ -379,7 +506,7 @@
           href="https://x.com/TRUMPBBsol"
           target="_blank"
           rel="noopener noreferrer"
-          class="group card-patriot rounded-2xl p-8 sm:p-10 flex flex-col items-center gap-4 w-64 hover:border-patriot-gold/60 hover:scale-105 transition-all"
+          class="group card-patriot rounded-2xl p-8 sm:p-10 flex flex-col items-center gap-4 w-64 hover:border-patriot-gold/60 hover:scale-105 transition-all wf-reveal"
         >
           <img
             src="x.png"
@@ -391,7 +518,7 @@
         </a>
       </div>
 
-      <div class="mt-16 text-center">
+      <div class="mt-16 text-center wf-reveal">
         <p class="font-display text-3xl sm:text-5xl tracking-wider text-patriot-gold animate-pulse-slow">
           MAKE CRYPTO GREAT AGAIN
         </p>
@@ -429,6 +556,7 @@
       </div>
     </div>
   </footer>
+  </div>
 
   <script>
     const menuBtn = document.getElementById('menu-btn');
@@ -453,6 +581,61 @@
         }
       });
     });
+
+    // Generate full-page waterfall streams & stars
+    (function initWaterfall() {
+      const bg = document.getElementById('waterfall-bg');
+      const streamCount = 28;
+      const starCount = 40;
+      const types = ['wf-stream-red', 'wf-stream-blue', 'wf-stream-gold'];
+
+      for (let i = 0; i < streamCount; i++) {
+        const stream = document.createElement('div');
+        const type = types[i % 3];
+        const left = (i / streamCount) * 100 + (Math.random() * 3 - 1.5);
+        const dur = 5 + Math.random() * 9;
+        const delay = Math.random() * -dur;
+        const opacity = 0.15 + Math.random() * 0.35;
+
+        stream.className = `wf-stream ${type}`;
+        stream.style.left = `${left}%`;
+        stream.style.setProperty('--wf-dur', `${dur}s`);
+        stream.style.setProperty('--wf-delay', `${delay}s`);
+        stream.style.setProperty('--wf-opacity', opacity);
+        bg.appendChild(stream);
+      }
+
+      const starColors = ['#FFD700', '#ffffff', '#B22234', '#4a9eff'];
+      for (let i = 0; i < starCount; i++) {
+        const star = document.createElement('div');
+        const left = Math.random() * 100;
+        const dur = 4 + Math.random() * 8;
+        const delay = Math.random() * -dur;
+        const size = 8 + Math.random() * 10;
+        const color = starColors[i % starColors.length];
+
+        star.className = 'wf-star';
+        star.textContent = '\u2605';
+        star.style.left = `${left}%`;
+        star.style.setProperty('--wf-dur', `${dur}s`);
+        star.style.setProperty('--wf-delay', `${delay}s`);
+        star.style.setProperty('--wf-size', `${size}px`);
+        star.style.setProperty('--wf-color', color);
+        bg.appendChild(star);
+      }
+    })();
+
+    // Cascade reveal on scroll
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('wf-visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.wf-reveal').forEach(el => revealObserver.observe(el));
   </script>
 </body>
 </html>

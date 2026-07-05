@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TRUMP BOOMER BULL — The Most Patriotic Bull on Solana</title>
+  <meta name="description" content="TRUMP BOOMER BULL ($TRUMPBB) — America's favorite meme coin. Bullish. Patriotic. Unstoppable on Solana." />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ['"Bebas Neue"', 'sans-serif'],
+            sans: ['Inter', 'sans-serif'],
+          },
+          colors: {
+            patriot: {
+              red: '#B22234',
+              blue: '#002868',
+              navy: '#0A1628',
+              gold: '#FFD700',
+            },
+          },
+          animation: {
+            'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            'float': 'float 6s ease-in-out infinite',
+          },
+          keyframes: {
+            float: {
+              '0%, 100%': { transform: 'translateY(0px)' },
+              '50%': { transform: 'translateY(-10px)' },
+            },
+          },
+        },
+      },
+    };
+  </script>
+  <style>
+    .stars-bg {
+      background-color: #0A1628;
+      background-image:
+        radial-gradient(2px 2px at 20px 30px, rgba(255,255,255,0.8), transparent),
+        radial-gradient(2px 2px at 40px 70px, rgba(255,255,255,0.5), transparent),
+        radial-gradient(1px 1px at 90px 40px, rgba(255,255,255,0.6), transparent),
+        radial-gradient(2px 2px at 130px 80px, rgba(255,255,255,0.4), transparent),
+        radial-gradient(1px 1px at 160px 30px, rgba(255,255,255,0.7), transparent),
+        radial-gradient(2px 2px at 200px 60px, rgba(255,255,255,0.5), transparent),
+        radial-gradient(1px 1px at 250px 20px, rgba(255,255,255,0.6), transparent),
+        radial-gradient(2px 2px at 300px 90px, rgba(255,255,255,0.4), transparent),
+        radial-gradient(1px 1px at 350px 50px, rgba(255,255,255,0.8), transparent),
+        radial-gradient(2px 2px at 400px 10px, rgba(255,255,255,0.5), transparent),
+        linear-gradient(180deg, #0A1628 0%, #002868 50%, #0A1628 100%);
+      background-size: 420px 100px, 420px 100px, 420px 100px, 420px 100px, 420px 100px, 420px 100px, 420px 100px, 420px 100px, 420px 100px, 420px 100px, 100% 100%;
+    }
+
+    .stripes-overlay::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 40px,
+        rgba(178, 34, 52, 0.04) 40px,
+        rgba(178, 34, 52, 0.04) 80px
+      );
+      pointer-events: none;
+    }
+
+    .text-stroke {
+      -webkit-text-stroke: 2px #002868;
+      paint-order: stroke fill;
+    }
+
+    .glow-red {
+      text-shadow: 0 0 20px rgba(178, 34, 52, 0.6), 0 0 40px rgba(178, 34, 52, 0.3);
+    }
+
+    .glow-blue {
+      text-shadow: 0 0 20px rgba(0, 40, 104, 0.6), 0 0 40px rgba(0, 40, 104, 0.3);
+    }
+
+    .card-patriot {
+      background: linear-gradient(135deg, rgba(0, 40, 104, 0.9) 0%, rgba(10, 22, 40, 0.95) 100%);
+      border: 2px solid rgba(255, 215, 0, 0.3);
+    }
+
+    .btn-patriot {
+      background: linear-gradient(135deg, #B22234 0%, #8B1A28 100%);
+      transition: all 0.3s ease;
+    }
+
+    .btn-patriot:hover {
+      background: linear-gradient(135deg, #D42B40 0%, #B22234 100%);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(178, 34, 52, 0.4);
+    }
+
+    .nav-link {
+      position: relative;
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: #FFD700;
+      transition: width 0.3s ease;
+    }
+
+    .nav-link:hover::after {
+      width: 100%;
+    }
+  </style>
+</head>
+<body class="stars-bg text-white font-sans antialiased min-h-screen">
+
+  <!-- Navigation -->
+  <nav class="fixed top-0 left-0 right-0 z-50 bg-patriot-navy/90 backdrop-blur-md border-b border-patriot-gold/20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16 sm:h-20">
+        <a href="#home" class="flex items-center gap-3 group">
+          <img src="logo.png" alt="TRUMP BOOMER BULL Logo" class="h-12 sm:h-14 w-auto group-hover:scale-105 transition-transform" />
+          <span class="font-display text-xl sm:text-2xl tracking-wider text-patriot-gold hidden sm:block">TRUMP BOOMER BULL</span>
+        </a>
+
+        <div class="hidden md:flex items-center gap-8">
+          <a href="#home" class="nav-link text-sm font-semibold uppercase tracking-wider text-white hover:text-patriot-gold transition-colors">Home</a>
+          <a href="#about" class="nav-link text-sm font-semibold uppercase tracking-wider text-white hover:text-patriot-gold transition-colors">About</a>
+          <a href="#how-to-buy" class="nav-link text-sm font-semibold uppercase tracking-wider text-white hover:text-patriot-gold transition-colors">How to Buy</a>
+          <a href="#social" class="nav-link text-sm font-semibold uppercase tracking-wider text-white hover:text-patriot-gold transition-colors">Social</a>
+        </div>
+
+        <button id="menu-btn" class="md:hidden p-2 text-patriot-gold" aria-label="Toggle menu">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <div id="mobile-menu" class="hidden md:hidden bg-patriot-navy/95 border-t border-patriot-gold/20">
+      <div class="px-4 py-4 flex flex-col gap-3">
+        <a href="#home" class="text-sm font-semibold uppercase tracking-wider py-2 hover:text-patriot-gold transition-colors">Home</a>
+        <a href="#about" class="text-sm font-semibold uppercase tracking-wider py-2 hover:text-patriot-gold transition-colors">About</a>
+        <a href="#how-to-buy" class="text-sm font-semibold uppercase tracking-wider py-2 hover:text-patriot-gold transition-colors">How to Buy</a>
+        <a href="#social" class="text-sm font-semibold uppercase tracking-wider py-2 hover:text-patriot-gold transition-colors">Social</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero / Home Section -->
+  <section id="home" class="relative pt-16 sm:pt-20 stripes-overlay">
+    <div class="relative w-full overflow-hidden">
+      <img
+        src="banner.png"
+        alt="TRUMP BOOMER BULL — America's Bull on Solana"
+        class="w-full h-auto object-cover"
+      />
+      <div class="absolute inset-0 bg-gradient-to-t from-patriot-navy via-transparent to-transparent"></div>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-8 sm:-mt-16 relative z-10 pb-16">
+      <div class="text-center">
+        <div class="inline-flex items-center gap-2 bg-patriot-blue/80 backdrop-blur-sm border border-patriot-gold/30 rounded-full px-5 py-2 mb-6">
+          <span class="text-patriot-gold text-lg">&#9733;</span>
+          <span class="text-sm font-bold uppercase tracking-widest text-patriot-gold">Built on Solana</span>
+          <span class="text-patriot-gold text-lg">&#9733;</span>
+        </div>
+
+        <h1 class="font-display text-5xl sm:text-7xl lg:text-8xl tracking-wider leading-none mb-4">
+          <span class="text-patriot-blue glow-blue">TRUMP</span>
+          <span class="text-patriot-red glow-red"> BOOMER </span>
+          <span class="text-patriot-blue glow-blue">BULL</span>
+        </h1>
+
+        <p class="text-lg sm:text-xl text-gray-300 max-w-2xl mx-auto mb-8 leading-relaxed">
+          The most patriotic meme coin in America. Born in the land of the free, charging straight to the moon
+          with horns high and flags waving. <span class="text-patriot-gold font-bold">$TRUMPBB</span> — because America deserves a bull market.
+        </p>
+
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a href="#how-to-buy" class="btn-patriot px-8 py-4 rounded-lg font-bold uppercase tracking-wider text-white text-lg">
+            Buy $TRUMPBB Now
+          </a>
+          <a href="#social" class="px-8 py-4 rounded-lg font-bold uppercase tracking-wider text-patriot-gold border-2 border-patriot-gold/50 hover:bg-patriot-gold/10 transition-all text-lg">
+            Join the Movement
+          </a>
+        </div>
+      </div>
+
+      <!-- Stats -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-16">
+        <div class="card-patriot rounded-xl p-6 text-center">
+          <div class="font-display text-3xl sm:text-4xl text-patriot-gold mb-1">100%</div>
+          <div class="text-xs sm:text-sm uppercase tracking-wider text-gray-400">American Made</div>
+        </div>
+        <div class="card-patriot rounded-xl p-6 text-center">
+          <div class="font-display text-3xl sm:text-4xl text-patriot-red mb-1">&#9733;</div>
+          <div class="text-xs sm:text-sm uppercase tracking-wider text-gray-400">Patriotic AF</div>
+        </div>
+        <div class="card-patriot rounded-xl p-6 text-center">
+          <div class="font-display text-3xl sm:text-4xl text-patriot-gold mb-1">SOL</div>
+          <div class="text-xs sm:text-sm uppercase tracking-wider text-gray-400">Solana Powered</div>
+        </div>
+        <div class="card-patriot rounded-xl p-6 text-center">
+          <div class="font-display text-3xl sm:text-4xl text-patriot-red mb-1">MOON</div>
+          <div class="text-xs sm:text-sm uppercase tracking-wider text-gray-400">Destination</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="relative py-20 sm:py-28 stripes-overlay">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <span class="text-patriot-gold font-bold uppercase tracking-widest text-sm">Our Story</span>
+        <h2 class="font-display text-4xl sm:text-6xl tracking-wider mt-2 text-white">
+          ABOUT <span class="text-patriot-red">THE BULL</span>
+        </h2>
+        <div class="w-24 h-1 bg-gradient-to-r from-patriot-red via-patriot-gold to-patriot-blue mx-auto mt-4"></div>
+      </div>
+
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div class="flex justify-center">
+          <div class="relative">
+            <div class="absolute -inset-4 bg-gradient-to-r from-patriot-red/30 via-patriot-gold/20 to-patriot-blue/30 rounded-2xl blur-xl"></div>
+            <img
+              src="logo.png"
+              alt="TRUMP BOOMER BULL Mascot"
+              class="relative w-64 sm:w-80 h-auto animate-float drop-shadow-2xl"
+            />
+          </div>
+        </div>
+
+        <div class="space-y-6">
+          <p class="text-lg text-gray-300 leading-relaxed">
+            In the greatest nation on Earth, where eagles soar and freedom rings, one bull stood taller than the rest.
+            <span class="text-patriot-gold font-bold">TRUMP BOOMER BULL</span> isn't just a meme coin — it's a movement.
+            A declaration that the American spirit is <span class="text-patriot-red font-bold">BULLISH</span> and unstoppable.
+          </p>
+          <p class="text-lg text-gray-300 leading-relaxed">
+            Forged in the fires of patriotism and launched on the lightning-fast Solana blockchain,
+            $TRUMPBB represents everything great about America: strength, determination, and the unwavering belief
+            that we're going to the moon — no matter what the bears say.
+          </p>
+          <p class="text-lg text-gray-300 leading-relaxed">
+            From sea to shining sea, from Wall Street to Main Street, the Boomer Bull charges forward.
+            Fighter jets in the sky. The Statue of Liberty standing tall. The flag waving in the wind.
+            This is more than crypto. <span class="text-white font-bold">This is America.</span>
+          </p>
+
+          <div class="flex flex-wrap gap-3 pt-4">
+            <span class="px-4 py-2 rounded-full bg-patriot-red/20 border border-patriot-red/40 text-sm font-semibold text-patriot-red">&#9733; Community Driven</span>
+            <span class="px-4 py-2 rounded-full bg-patriot-blue/20 border border-patriot-blue/40 text-sm font-semibold text-blue-300">&#9733; Solana Native</span>
+            <span class="px-4 py-2 rounded-full bg-patriot-gold/20 border border-patriot-gold/40 text-sm font-semibold text-patriot-gold">&#9733; 100% Patriotic</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How to Buy Section -->
+  <section id="how-to-buy" class="relative py-20 sm:py-28">
+    <div class="absolute inset-0 bg-gradient-to-b from-transparent via-patriot-blue/10 to-transparent"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+      <div class="text-center mb-16">
+        <span class="text-patriot-gold font-bold uppercase tracking-widest text-sm">Easy as Apple Pie</span>
+        <h2 class="font-display text-4xl sm:text-6xl tracking-wider mt-2 text-white">
+          HOW TO <span class="text-patriot-red">BUY</span>
+        </h2>
+        <div class="w-24 h-1 bg-gradient-to-r from-patriot-red via-patriot-gold to-patriot-blue mx-auto mt-4"></div>
+        <p class="text-gray-400 mt-4 max-w-xl mx-auto">Four simple steps to join the most patriotic bull run in crypto history.</p>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="card-patriot rounded-2xl p-8 relative group hover:border-patriot-gold/60 transition-all">
+          <div class="absolute -top-4 -left-2 font-display text-6xl text-patriot-red/30 group-hover:text-patriot-red/50 transition-colors">01</div>
+          <div class="relative pt-6">
+            <div class="w-12 h-12 rounded-lg bg-patriot-red/20 flex items-center justify-center mb-4 text-2xl">&#128176;</div>
+            <h3 class="font-display text-2xl tracking-wider text-patriot-gold mb-3">Get a Wallet</h3>
+            <p class="text-gray-400 text-sm leading-relaxed">
+              Download Phantom or Solflare wallet. Your digital freedom starts here, patriot.
+            </p>
+          </div>
+        </div>
+
+        <div class="card-patriot rounded-2xl p-8 relative group hover:border-patriot-gold/60 transition-all">
+          <div class="absolute -top-4 -left-2 font-display text-6xl text-patriot-red/30 group-hover:text-patriot-red/50 transition-colors">02</div>
+          <div class="relative pt-6">
+            <div class="w-12 h-12 rounded-lg bg-patriot-blue/20 flex items-center justify-center mb-4 text-2xl">&#9889;</div>
+            <h3 class="font-display text-2xl tracking-wider text-patriot-gold mb-3">Buy SOL</h3>
+            <p class="text-gray-400 text-sm leading-relaxed">
+              Purchase SOL from Coinbase, Binance, or any exchange. Fuel up for the bull charge.
+            </p>
+          </div>
+        </div>
+
+        <div class="card-patriot rounded-2xl p-8 relative group hover:border-patriot-gold/60 transition-all">
+          <div class="absolute -top-4 -left-2 font-display text-6xl text-patriot-red/30 group-hover:text-patriot-red/50 transition-colors">03</div>
+          <div class="relative pt-6">
+            <div class="w-12 h-12 rounded-lg bg-patriot-red/20 flex items-center justify-center mb-4 text-2xl">&#128260;</div>
+            <h3 class="font-display text-2xl tracking-wider text-patriot-gold mb-3">Swap for $TRUMPBB</h3>
+            <p class="text-gray-400 text-sm leading-relaxed">
+              Head to Jupiter or Raydium, paste the contract address, and swap your SOL for $TRUMPBB.
+            </p>
+          </div>
+        </div>
+
+        <div class="card-patriot rounded-2xl p-8 relative group hover:border-patriot-gold/60 transition-all">
+          <div class="absolute -top-4 -left-2 font-display text-6xl text-patriot-red/30 group-hover:text-patriot-red/50 transition-colors">04</div>
+          <div class="relative pt-6">
+            <div class="w-12 h-12 rounded-lg bg-patriot-gold/20 flex items-center justify-center mb-4 text-2xl">&#127482;&#127480;</div>
+            <h3 class="font-display text-2xl tracking-wider text-patriot-gold mb-3">HODL &amp; Celebrate</h3>
+            <p class="text-gray-400 text-sm leading-relaxed">
+              You're now part of the movement. HODL tight, wave that flag, and ride this bull to the moon!
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-12 card-patriot rounded-2xl p-6 sm:p-8 max-w-3xl mx-auto">
+        <div class="flex flex-col sm:flex-row items-center gap-4">
+          <div class="flex-shrink-0 font-display text-lg text-patriot-gold uppercase tracking-wider">Contract:</div>
+          <div class="flex-1 w-full bg-patriot-navy/80 rounded-lg px-4 py-3 font-mono text-sm text-gray-300 text-center sm:text-left break-all border border-patriot-gold/20">
+            TBA — Check our Telegram for the official contract address
+          </div>
+          <button
+            onclick="navigator.clipboard.writeText('TBA — Check Telegram')"
+            class="flex-shrink-0 px-5 py-3 rounded-lg bg-patriot-blue hover:bg-patriot-blue/80 font-semibold text-sm uppercase tracking-wider transition-colors border border-patriot-gold/30"
+          >
+            Copy
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Social Section -->
+  <section id="social" class="relative py-20 sm:py-28 stripes-overlay">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <span class="text-patriot-gold font-bold uppercase tracking-widest text-sm">Join the Patriots</span>
+        <h2 class="font-display text-4xl sm:text-6xl tracking-wider mt-2 text-white">
+          SOCIAL <span class="text-patriot-red">LINKS</span>
+        </h2>
+        <div class="w-24 h-1 bg-gradient-to-r from-patriot-red via-patriot-gold to-patriot-blue mx-auto mt-4"></div>
+        <p class="text-gray-400 mt-4 max-w-xl mx-auto">
+          Connect with fellow patriots. The revolution won't be televised — it'll be tweeted and telegrammed.
+        </p>
+      </div>
+
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-8">
+        <a
+          href="https://t.me/TRUMPBBsol"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="group card-patriot rounded-2xl p-8 sm:p-10 flex flex-col items-center gap-4 w-64 hover:border-patriot-gold/60 hover:scale-105 transition-all"
+        >
+          <img
+            src="tg.png"
+            alt="Telegram"
+            class="w-20 h-20 group-hover:scale-110 transition-transform"
+          />
+          <span class="font-display text-2xl tracking-wider text-white group-hover:text-patriot-gold transition-colors">Telegram</span>
+          <span class="text-sm text-gray-400">@TRUMPBBsol</span>
+        </a>
+
+        <a
+          href="https://x.com/TRUMPBBsol"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="group card-patriot rounded-2xl p-8 sm:p-10 flex flex-col items-center gap-4 w-64 hover:border-patriot-gold/60 hover:scale-105 transition-all"
+        >
+          <img
+            src="x.png"
+            alt="X (Twitter)"
+            class="w-20 h-20 group-hover:scale-110 transition-transform"
+          />
+          <span class="font-display text-2xl tracking-wider text-white group-hover:text-patriot-gold transition-colors">X / Twitter</span>
+          <span class="text-sm text-gray-400">@TRUMPBBsol</span>
+        </a>
+      </div>
+
+      <div class="mt-16 text-center">
+        <p class="font-display text-3xl sm:text-5xl tracking-wider text-patriot-gold animate-pulse-slow">
+          MAKE CRYPTO GREAT AGAIN
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="relative border-t border-patriot-gold/20 bg-patriot-navy/80 py-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-6">
+        <div class="flex items-center gap-3">
+          <img src="logo.png" alt="TRUMP BOOMER BULL" class="h-10 w-auto" />
+          <span class="font-display text-lg tracking-wider text-patriot-gold">TRUMP BOOMER BULL</span>
+        </div>
+
+        <div class="flex items-center gap-6">
+          <a href="https://t.me/TRUMPBBsol" target="_blank" rel="noopener noreferrer" class="opacity-70 hover:opacity-100 transition-opacity">
+            <img src="tg.png" alt="Telegram" class="w-8 h-8" />
+          </a>
+          <a href="https://x.com/TRUMPBBsol" target="_blank" rel="noopener noreferrer" class="opacity-70 hover:opacity-100 transition-opacity">
+            <img src="x.png" alt="X" class="w-8 h-8" />
+          </a>
+        </div>
+
+        <p class="text-xs text-gray-500 text-center sm:text-right max-w-xs">
+          $TRUMPBB is a meme coin with no intrinsic value. Trade at your own risk. Not financial advice.
+        </p>
+      </div>
+
+      <div class="mt-8 pt-6 border-t border-patriot-gold/10 text-center">
+        <p class="text-sm text-gray-500">
+          &copy; 2026 TRUMP BOOMER BULL. All rights reserved. &#9733; God Bless America &#9733;
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const menuBtn = document.getElementById('menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+      });
+    });
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
